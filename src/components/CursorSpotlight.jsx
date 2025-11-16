@@ -1,10 +1,9 @@
-// src/components/CursorSpotlight.jsx
 import { motion } from 'framer-motion';
 import { useMousePosition } from '../hooks/useMousePosition';
 
 const CursorSpotlight = () => {
   const { x, y } = useMousePosition();
-  const size = 300; // The size of the spotlight circle
+  const size = 300;
 
   return (
     <motion.div

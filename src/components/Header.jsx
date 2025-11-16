@@ -1,9 +1,7 @@
-// src/components/Header.jsx
 import { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { Button } from '~/components/ui/button';
 import { Menu, X } from 'lucide-react';
-// CHANGE: The main `motion` import is no longer needed here.
 import { AnimatePresence, motion } from 'framer-motion';
 
 const navLinks = [
@@ -29,8 +27,6 @@ const Header = ({ theme = 'light' }) => {
   );
 
   return (
-    // CHANGE: This is now a standard <header> tag, not a motion.header.
-    // The animation props have been removed.
     <header className="absolute top-0 z-50 w-full">
       <div className="relative container mx-auto h-24 flex items-center justify-between px-4 md:px-8">
         

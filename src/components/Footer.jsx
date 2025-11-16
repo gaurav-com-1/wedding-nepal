@@ -9,7 +9,7 @@ const Footer = () => {
     <footer className="bg-slate-900 text-primary-foreground py-20 sm:py-28">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section 1: The CTA Card, now fully inside the footer */}
+        {/* Section 1 */}
         <motion.div 
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -29,7 +29,7 @@ const Footer = () => {
           </Button>
         </motion.div>
 
-        {/* Section 2: Main Footer Content */}
+        {/* Section 2 */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pt-16 pb-8 text-center md:text-left">
           
           {/* Brand Column */}
@@ -72,7 +72,7 @@ const Footer = () => {
 
         <hr className="border-primary-foreground/10" />
 
-        {/* Section 3: Copyright */}
+        {/* Copyright */}
         <div className="py-6 flex flex-col sm:flex-row justify-between items-center text-sm text-primary-foreground/50">
           <p>&copy; {new Date().getFullYear()} Wedding Nepal. All Rights Reserved.</p>
           </div>        

@@ -1,4 +1,3 @@
-// src/components/BackToTopButton.jsx
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUp } from 'lucide-react';
@@ -7,9 +6,7 @@ import { Button } from '~/components/ui/button';
 const BackToTopButton = () => {
   const [isVisible, setIsVisible] = useState(false);
 
-  // This function toggles the visibility of the button based on scroll position.
   const toggleVisibility = () => {
-    // Show button if page is scrolled more than 300px
     if (window.pageYOffset > 300) {
       setIsVisible(true);
     } else {
@@ -17,7 +14,6 @@ const BackToTopButton = () => {
     }
   };
 
-  // This function smoothly scrolls the page to the top.
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -25,11 +21,9 @@ const BackToTopButton = () => {
     });
   };
 
-  // This useEffect hook adds and removes the scroll event listener.
   useEffect(() => {
     window.addEventListener('scroll', toggleVisibility);
 
-    // Cleanup function to remove the listener when the component is unmounted.
     return () => {
       window.removeEventListener('scroll', toggleVisibility);
     };

@@ -1,4 +1,3 @@
-// src/components/PricingCard.jsx
 import { Button } from '~/components/ui/button';
 import { motion } from 'framer-motion';
 import { CheckCircle2 } from 'lucide-react';
@@ -8,7 +7,6 @@ const cardVariants = {
   visible: { opacity: 1, y: 0 },
 };
 
-// The props are now simpler, `isAnnual` is gone.
 const PricingCard = ({ plan, delay }) => {
   return (
     <motion.div
@@ -22,9 +20,7 @@ const PricingCard = ({ plan, delay }) => {
       <p className="mt-2 text-foreground/70">{plan.description}</p>
       
       <div className="mt-6">
-        {/* The price display is now direct and simple. */}
         <span className="text-5xl font-bold">${plan.price}</span>
-        {/* The "/month" or "/year" text has been removed. */}
       </div>
 
       <ul className="mt-8 space-y-4">
