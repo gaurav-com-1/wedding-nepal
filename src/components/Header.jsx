@@ -3,8 +3,8 @@ import { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { Button } from '~/components/ui/button';
 import { Menu, X } from 'lucide-react';
-// Import AnimatePresence for exit animations
-import { motion, AnimatePresence } from 'framer-motion';
+// CHANGE: The main `motion` import is no longer needed here.
+import { AnimatePresence, motion } from 'framer-motion';
 
 const navLinks = [
   { path: '/about', label: 'About' },
@@ -29,12 +29,9 @@ const Header = ({ theme = 'light' }) => {
   );
 
   return (
-    <motion.header 
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5, ease: 'easeOut' }}
-      className="absolute top-0 z-50 w-full"
-    >
+    // CHANGE: This is now a standard <header> tag, not a motion.header.
+    // The animation props have been removed.
+    <header className="absolute top-0 z-50 w-full">
       <div className="relative container mx-auto h-24 flex items-center justify-between px-4 md:px-8">
         
         <NavLink to="/" className={`font-bold text-xl tracking-wider uppercase ${textColor}`}>
@@ -51,7 +48,6 @@ const Header = ({ theme = 'light' }) => {
           </Button>
         </div>
 
-        {/* Mobile Menu Button - unchanged */}
         <div className="md:hidden">
           <button onClick={() => setIsMenuOpen(!isMenuOpen)} className={textColor}>
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -59,7 +55,6 @@ const Header = ({ theme = 'light' }) => {
         </div>
       </div>
       
-      {/* --- REBUILT MOBILE MENU --- */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
@@ -67,8 +62,7 @@ const Header = ({ theme = 'light' }) => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.2, ease: 'easeInOut' }}
-            // Styling for the compact card
-            className="md:hidden absolute top-16 right-4 w-64 bg-background rounded-xl shadow-2xl border border-black/5"
+            className="md:hidden absolute top-24 right-4 w-64 bg-background rounded-xl shadow-2xl border border-black/5"
           >
             <nav className="flex flex-col p-4">
               {navLinks.map((link) => (
@@ -76,7 +70,6 @@ const Header = ({ theme = 'light' }) => {
                   key={link.label}
                   to={link.path}
                   onClick={() => setIsMenuOpen(false)}
-                  // Explicitly use dark text color, ignoring the theme prop
                   className="p-3 text-foreground font-medium rounded-md hover:bg-black/5 transition-colors text-left"
                 >
                   {link.label}
@@ -90,7 +83,7 @@ const Header = ({ theme = 'light' }) => {
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.header>
+    </header>
   );
 };
 

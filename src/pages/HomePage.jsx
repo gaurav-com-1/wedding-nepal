@@ -10,7 +10,6 @@ import CinematicGallery from '../components/CinematicGallery';
 
 // Import assets
 import HeroVideo from '../assets/hero-video.mp4';
-import JourneyImage from '../assets/photo6.jpg';
 
 // --- Data for components ---
 const faqItems = [
@@ -34,7 +33,9 @@ const faqItems = [
 
 const HomePage = () => {
   return (
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
+    // CHANGE: This is now a standard <div>, not a motion.div.
+    // The initial, animate, and transition props have been removed.
+    <div>
       <CursorSpotlight />
 
       {/* --- HERO SECTION --- */}
@@ -58,7 +59,6 @@ const HomePage = () => {
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }}
             className="mt-8 flex justify-center gap-4"
           >
-            {/* --- THIS IS THE MODIFIED BUTTON --- */}
             <Button size="lg" asChild className="bg-white text-primary hover:bg-white/90">
               <Link to="/contact">Begin Your Story</Link>
             </Button>
@@ -89,8 +89,7 @@ const HomePage = () => {
           </Accordion>
         </div>
       </section>
-
-    </motion.div>
+    </div>
   );
 };
 
