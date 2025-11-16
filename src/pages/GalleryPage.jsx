@@ -38,9 +38,13 @@ const GalleryPage = () => {
             key={i}
             className="overflow-hidden rounded-lg shadow-lg cursor-pointer"
             layoutId={`gallery-image-${i}`}
+            // --- THIS IS THE FIX ---
+            // We replaced `animate` with `whileInView` for more reliable scroll-triggered animations.
             initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.3, delay: i * 0.05 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }} // Ensures the animation only runs once per element
+            transition={{ duration: 0.5, delay: i * 0.05 }}
+            // ---------------------
             onClick={() => {
               setIndex(i);
               setOpen(true);
@@ -65,5 +69,4 @@ const GalleryPage = () => {
   );
 };
 
-// Ensure this line is correct
 export default GalleryPage;
