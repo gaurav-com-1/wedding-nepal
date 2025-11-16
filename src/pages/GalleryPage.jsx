@@ -1,16 +1,20 @@
+// src/pages/GalleryPage.jsx
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 
+// Import your photos
 import photo1 from '../assets/photo1.jpg';
 import photo2 from '../assets/photo2.jpg';
 import photo3 from '../assets/photo3.jpg';
 import photo4 from '../assets/photo4.jpg';
+import photo5 from '../assets/photo5.jpg';
+import photo6 from '../assets/photo6.jpg';
+import photo7 from '../assets/polaroid1.jpg';
+import photo8 from '../assets/polaroid2.jpg';
 
-const images = [photo1, photo2, photo3, photo4];
-
+const images = [photo1, photo2, photo3, photo4, photo5, photo6, photo7, photo8];
 const slides = images.map(src => ({ src }));
 
 const GalleryPage = () => {
@@ -18,31 +22,27 @@ const GalleryPage = () => {
   const [index, setIndex] = useState(0);
 
   return (
-    <div className="container mx-auto max-w-7xl pt-28 pb-20 sm:px-6 lg:px-8">
-      {/* Header Section */}
-        <div className="text-center">
-          <p className="text-sm font-semibold uppercase tracking-widest text-foreground/60">
-            Gallery
-          </p>
-          <h1 className="mt-2 text-4xl font-serif font-bold sm:text-5xl">
-            Our Collections
-          </h1>
-          <p className="mt-4 max-w-2xl mx-auto text-lg text-foreground/70">
-            A curated selection of moments captured through our lens.
-          </p>
-        </div>
+    <div className="container py-12 sm:py-20">
+      <motion.h1 
+        className="text-4xl font-serif font-bold text-center mb-12"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        Our Collections
+      </motion.h1>
 
-      <div className="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-3 lg:gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {images.map((imageSrc, i) => (
           <motion.div
             key={i}
             className="overflow-hidden rounded-lg shadow-lg cursor-pointer"
-            layoutId={`gallery-image-${i}`} // For potential future animations
+            layoutId={`gallery-image-${i}`}
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.3, delay: i * 0.05 }}
             onClick={() => {
-              setIndex(i); // Tell the lightbox which image to start with
+              setIndex(i);
               setOpen(true);
             }}
           >
@@ -55,18 +55,15 @@ const GalleryPage = () => {
         ))}
       </div>
 
-      {/* 4. Render the Lightbox component */}
-      {/* It's invisible until the `open` state is true */}
       <Lightbox
         open={open}
         close={() => setOpen(false)}
         slides={slides}
         index={index}
-        // Optional: Add more features like thumbnails or zoom
-        // plugins={[Thumbnails, Zoom]}
       />
     </div>
   );
 };
 
+// Ensure this line is correct
 export default GalleryPage;
