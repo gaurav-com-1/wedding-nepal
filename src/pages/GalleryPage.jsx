@@ -1,6 +1,6 @@
 // src/pages/GalleryPage.jsx
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+// 1. The `framer-motion` import has been removed.
 import Lightbox from "yet-another-react-lightbox";
 
 // Import your photos
@@ -17,33 +17,22 @@ const images = [photo1, photo2, photo3, photo4, photo5, photo6, photo7, photo8];
 const slides = images.map(src => ({ src }));
 
 const GalleryPage = () => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = inite(false);
   const [index, setIndex] = useState(0);
 
   return (
     <div className="container py-12 sm:py-20">
-      <motion.h1 
-        className="text-4xl font-serif font-bold text-center mb-12"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
+      {/* 2. This is now a standard <h1> element, with animation props removed. */}
+      <h1 className="text-4xl font-serif font-bold text-center mb-12">
         Our Collections
-      </motion.h1>
+      </h1>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {images.map((imageSrc, i) => (
-          <motion.div
+          // 3. This is now a standard <div> element, with animation props removed.
+          <div
             key={i}
             className="overflow-hidden rounded-lg shadow-lg cursor-pointer"
-            layoutId={`gallery-image-${i}`}
-            // --- THIS IS THE FIX ---
-            // We replaced `animate` with `whileInView` for more reliable scroll-triggered animations.
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }} // Ensures the animation only runs once per element
-            transition={{ duration: 0.5, delay: i * 0.05 }}
-            // ---------------------
             onClick={() => {
               setIndex(i);
               setOpen(true);
@@ -54,7 +43,7 @@ const GalleryPage = () => {
               alt={`Wedding scene ${i + 1}`} 
               className="w-full h-full object-cover aspect-square transition-transform duration-300 hover:scale-105"
             />
-          </motion.div>
+          </div>
         ))}
       </div>
 
