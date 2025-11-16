@@ -1,4 +1,3 @@
-// src/pages/GalleryPage.jsx
 import { useState } from 'react';
 // 1. The `framer-motion` import has been removed.
 import Lightbox from "yet-another-react-lightbox";

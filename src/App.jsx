@@ -14,7 +14,6 @@ function App() {
         <Route index element={<HomePage />} />
         <Route path="gallery" element={<GalleryPage />} />
         <Route path="about" element={<AboutPage />} />
-        {/* 2. Add the new route for the pricing page */}
         <Route path="pricing" element={<PricingPage />} />
         <Route path="contact" element={<ContactPage />} />
       </Route>
