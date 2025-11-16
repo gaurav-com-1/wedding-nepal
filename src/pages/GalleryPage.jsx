@@ -1,5 +1,5 @@
+// src/pages/GalleryPage.jsx
 import { useState } from 'react';
-// 1. The `framer-motion` import has been removed.
 import Lightbox from "yet-another-react-lightbox";
 
 // Import your photos
@@ -16,19 +16,18 @@ const images = [photo1, photo2, photo3, photo4, photo5, photo6, photo7, photo8];
 const slides = images.map(src => ({ src }));
 
 const GalleryPage = () => {
-  const [open, setOpen] = inite(false);
+  // THIS IS THE CORRECTED LINE
+  const [open, setOpen] = useState(false);
   const [index, setIndex] = useState(0);
 
   return (
     <div className="container py-12 sm:py-20">
-      {/* 2. This is now a standard <h1> element, with animation props removed. */}
       <h1 className="text-4xl font-serif font-bold text-center mb-12">
         Our Collections
       </h1>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {images.map((imageSrc, i) => (
-          // 3. This is now a standard <div> element, with animation props removed.
           <div
             key={i}
             className="overflow-hidden rounded-lg shadow-lg cursor-pointer"
